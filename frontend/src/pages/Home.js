@@ -16,13 +16,13 @@ const Home = () => {
   }, []);
 
   const fetchEvents = () => {
-    axios.get('http://localhost:5001/api/events')
+    axios.get('https://event-manage-backend-9p0o.onrender.com/api/events')
       .then(response => setEvents(response.data))
       .catch(error => console.error(error));
   };
 
   const fetchNotifications = () => {
-    axios.get('http://localhost:5001/api/notifications')
+    axios.get('https://event-manage-backend-9p0o.onrender.com/api/notifications')
       .then(response => setNotifications(response.data))
       .catch(error => console.error(error));
   };
@@ -32,11 +32,11 @@ const Home = () => {
     if (searchQuery) params.name = searchQuery;
     if (searchDate) params.date = searchDate;
 
-    axios.get('http://localhost:5001/api/events/search', { params })
+    axios.get('https://event-manage-backend-9p0o.onrender.com/api/events/search', { params })
       .then(response => setEvents(response.data))
       .catch(error => console.error(error));
     
-    axios.post('http://localhost:5001/api/notifications', {
+    axios.post('https://event-manage-backend-9p0o.onrender.com/api/notifications', {
       message: `Searched for events with name: ${searchQuery} and date: ${searchDate}`
     })
     .then(() => fetchNotifications())
@@ -44,7 +44,7 @@ const Home = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5001/api/events/${id}`)
+    axios.delete(`https://event-manage-backend-9p0o.onrender.com/api/events/${id}`)
       .then(() => fetchEvents())
       .catch(error => console.error(error));
   };

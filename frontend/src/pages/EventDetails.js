@@ -7,7 +7,7 @@ const EventDetails = () => {
   const [event, setEvent] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5001/api/events/${id}`)
+    axios.get(`https://event-manage-backend-9p0o.onrender.com/api/events/${id}`)
       .then(response => setEvent(response.data))
       .catch(error => console.error(error));
   }, [id]);

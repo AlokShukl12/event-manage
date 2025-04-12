@@ -17,7 +17,7 @@ const UpdateEvent = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await axios.get(`http://localhost:5001/api/events/${id}`);
+        const response = await axios.get(`https://event-manage-backend-9p0o.onrender.com/api/events/${id}`);
         const event = response.data;
         setName(event.name);
         setDate(event.date.split('T')[0]);
@@ -41,7 +41,7 @@ const UpdateEvent = () => {
     setSubmitting(true);
 
     try {
-      const response = await axios.put(`http://localhost:5001/api/events/${id}`, {
+      const response = await axios.put(`https://event-manage-backend-9p0o.onrender.com/api/events/${id}`, {
         name,
         date,
         location,

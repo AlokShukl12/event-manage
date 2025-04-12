@@ -24,7 +24,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5001/api/auth/login', formData);
+      const response = await axios.post('https://event-manage-backend-9p0o.onrender.com/api/auth/login', formData);
       const { token, user } = response.data;
       
       // Store token and user data

@@ -32,9 +32,9 @@ const Signup = () => {
     }
 
     setLoading(true);
-
+    // http://localhost:5001
     try {
-      await axios.post('http://localhost:5001/api/auth/register', {
+      await axios.post('https://event-manage-backend-9p0o.onrender.com/api/auth/register', {
         name: formData.name,
         email: formData.email,
         password: formData.password,

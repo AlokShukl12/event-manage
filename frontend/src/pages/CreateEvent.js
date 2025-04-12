@@ -25,7 +25,7 @@ const CreateEvent = () => {
     }
 
     try {
-      await axios.post('http://localhost:5001/api/events', { 
+      await axios.post('https://event-manage-backend-9p0o.onrender.com/api/events', { 
         name, 
         date, 
         location, 
