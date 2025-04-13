@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL
 const EventDetails = () => {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
 
   useEffect(() => {
-    axios.get(`https://event-manage-backend-9p0o.onrender.com/api/events/${id}`)
+    axios.get(`${backendUrl}/api/events/${id}`)
       .then(response => setEvent(response.data))
       .catch(error => console.error(error));
   }, [id]);

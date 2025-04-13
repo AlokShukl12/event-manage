@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { BellIcon } from '@heroicons/react/24/outline';
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL
 const Home = () => {
   const [events, setEvents] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,13 +16,13 @@ const Home = () => {
   }, []);
 
   const fetchEvents = () => {
-    axios.get('https://event-manage-backend-9p0o.onrender.com/api/events')
+    axios.get(`${backendUrl}/api/events`)
       .then(response => setEvents(response.data))
       .catch(error => console.error(error));
   };
 
   const fetchNotifications = () => {
-    axios.get('https://event-manage-backend-9p0o.onrender.com/api/notifications')
+    axios.get(`${backendUrl}/api/notifications`)
       .then(response => setNotifications(response.data))
       .catch(error => console.error(error));
   };
@@ -32,11 +32,11 @@ const Home = () => {
     if (searchQuery) params.name = searchQuery;
     if (searchDate) params.date = searchDate;
 
-    axios.get('https://event-manage-backend-9p0o.onrender.com/api/events/search', { params })
+    axios.get(`${backendUrl}/api/events/search`, { params })
       .then(response => setEvents(response.data))
       .catch(error => console.error(error));
     
-    axios.post('https://event-manage-backend-9p0o.onrender.com/api/notifications', {
+    axios.post(`${backendUrl}/api/notifications`, {
       message: `Searched for events with name: ${searchQuery} and date: ${searchDate}`
     })
     .then(() => fetchNotifications())
@@ -44,7 +44,7 @@ const Home = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`https://event-manage-backend-9p0o.onrender.com/api/events/${id}`)
+    axios.delete(`${backendUrl}/api/events/${id}`)
       .then(() => fetchEvents())
       .catch(error => console.error(error));
   };

@@ -14,10 +14,12 @@ const UpdateEvent = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  const backendUrl = process.env.REACT_APP_BACKEND_URL
+
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await axios.get(`https://event-manage-backend-9p0o.onrender.com/api/events/${id}`);
+        const response = await axios.get( `${backendUrl}/api/events/${id}`);
         const event = response.data;
         setName(event.name);
         setDate(event.date.split('T')[0]);
@@ -41,7 +43,7 @@ const UpdateEvent = () => {
     setSubmitting(true);
 
     try {
-      const response = await axios.put(`https://event-manage-backend-9p0o.onrender.com/api/events/${id}`, {
+      const response = await axios.put(`${backendUrl}/api/events/${id}`, {
         name,
         date,
         location,

@@ -10,8 +10,10 @@ dotenv.config();
 
 const app = express();
 
+console.log(process.env.REACT_APP);
+
 app.use(cors({
-  origin: 'https://event-manage-amber.vercel.app/', // Or '*' for all, during dev
+  origin: process.env.REACT_APP, // Or '*' for all, during dev
   credentials: true
 }));
 app.use(express.json());

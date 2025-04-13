@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL
+console.log(backendUrl);
+
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -24,7 +28,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('https://event-manage-backend-9p0o.onrender.com/api/auth/login', formData);
+      const response = await axios.post(`${backendUrl}/api/auth/login`, formData);
       const { token, user } = response.data;
       
       // Store token and user data

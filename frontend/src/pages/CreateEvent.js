@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL
 const CreateEvent = () => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
@@ -25,7 +25,7 @@ const CreateEvent = () => {
     }
 
     try {
-      await axios.post('https://event-manage-backend-9p0o.onrender.com/api/events', { 
+      await axios.post(`${backendUrl}/api/events`, { 
         name, 
         date, 
         location, 
