@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-
+ const backendUrl = process.env.REACT_APP_BACKEND_URL
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -34,7 +34,7 @@ const Signup = () => {
     setLoading(true);
   
     try {
-      await axios.post('http://localhost:5001/api/auth/register', {
+      await axios.post(`${backendUrl}/api/auth/register`, {
         name: formData.name,
         email: formData.email,
         password: formData.password,
